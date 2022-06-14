@@ -1,0 +1,11 @@
+.header {
+    height: 70px;
+    border-radius: 0 0 10px 10px;
+  
+    background-color: #FFA351FF;
+  }
+  
+  .header .header_logo-logoImg {
+    width: 60px;
+    margin: 5px;
+  }

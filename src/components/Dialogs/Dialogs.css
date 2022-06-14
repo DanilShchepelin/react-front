@@ -1,0 +1,38 @@
+.dialogs {
+    height: calc(100vh - 130px);
+    padding: 20px;
+    display: flex;
+    flex-direction: row;
+}
+
+.dialogs .dialogs_items {
+    margin-right: 60px;
+}
+
+.dialogs .dialogs_items .dialogs_item {
+    height: 25px;
+    width: 150px;
+    padding-top: 10px;
+    padding-left: 10px;
+    margin-bottom: 5px;
+    padding-bottom: 10px;
+    border: 1px solid rgb(179, 122, 66);
+    border-radius: 5px;
+}
+
+.dialogs .dialogs_items .dialogs_item:last-child {
+    margin-bottom: 0;
+}
+
+.dialogs .dialogs_messages {
+    width: 100%;
+    padding: 10px;
+    height: calc(100vh - 150px);
+    background-color: #FFBE7BFF;
+    border-radius: 5px;
+}
+
+.dialogs a {
+    text-decoration: none;
+    color: black;
+}

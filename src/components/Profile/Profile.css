@@ -1,0 +1,14 @@
+.content .content_profielBacgroung {
+    margin: 10px;
+}
+
+.content .content_profielBacgroung img {
+    width: 100%;
+    height: 250px;
+    border-radius: 10px;
+}
+
+.content .content_profile{
+    margin-left: 10px;
+    margin-bottom: 10px;
+}
