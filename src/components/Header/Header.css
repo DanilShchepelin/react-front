@@ -1,11 +1,25 @@
 .header {
-    height: 70px;
-    border-radius: 0 0 10px 10px;
-  
-    background-color: #FFA351FF;
-  }
-  
-  .header .header_logo-logoImg {
-    width: 60px;
-    margin: 5px;
-  }
+  height: 70px;
+  border-radius: 0 0 10px 10px;
+  display: flex;
+  align-items: center;
+
+  background-color: #FFA351FF;
+}
+
+.header .header_logo-logoImg {
+  width: 60px;
+  margin: 5px;
+}
+
+.header .header_sign {
+  /* margin-right: px; */
+  margin-left: auto;
+}
+
+.header .header_sign a {
+  margin-right: 15px;
+  color: black;
+  text-decoration: none;
+  text-transform: uppercase;
+}
