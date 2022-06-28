@@ -9,8 +9,13 @@ import News from './components/News/News';
 import Profile from './components/Profile/Profile';
 import Settings from './components/Settings/Settings';
 import Registration from './components/Registration/Registration'
+import { useContext } from 'react';
+import { MainStoreContext } from './store';
+import {observer} from 'mobx-react';
 
 const App = () => {
+  const {AuthStore} = useContext(MainStoreContext);
+
   return (
     <BrowserRouter>
       <div className="container">
@@ -21,13 +26,15 @@ const App = () => {
           <Navbar />
           <div className='content'>
             <Routes>
-              <Route path='/profile' element={<Profile />} />
-              <Route path='/dialogs/*' element={<Dialogs />} />
-              <Route path='/news' element={<News />} />
-              <Route path='/music' element={<Music />} />
-              <Route path='/settings' element={<Settings />} />
-              <Route path='/login' element={<Login />} />
-              <Route path='/registration' element={<Registration />} />
+              AuthStore.isLoggedIn ? 
+                <Route path='/profile' element={<Profile />} />
+                <Route path='/dialogs/*' element={<Dialogs />} />
+                <Route path='/news' element={<News />} />
+                <Route path='/music' element={<Music />} />
+                <Route path='/settings' element={<Settings />} /> 
+                <Route path='/registration' element={<Registration />} /> :
+                <Route path='/login' element={<Login />} />
+              
             </Routes>
           </div>
         </div>
@@ -36,5 +43,5 @@ const App = () => {
   );
 }
 
-export default App;
+export default observer(App);
 

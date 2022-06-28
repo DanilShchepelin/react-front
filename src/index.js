@@ -1,13 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { MainStore, MainStoreContext } from './store';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
-  <React.StrictMode>
+  <MainStoreContext.Provider value={new MainStore()}>
     <App />
-  </React.StrictMode>,
+  </MainStoreContext.Provider>
+    
+,
   document.getElementById('root')
 );
 
