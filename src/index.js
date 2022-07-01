@@ -2,14 +2,13 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { MainStore, MainStoreContext } from './store';
 import './index.css';
-import App from './App';
+import App from './App.js';
 import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
   <MainStoreContext.Provider value={new MainStore()}>
     <App />
   </MainStoreContext.Provider>
-    
 ,
   document.getElementById('root')
 );

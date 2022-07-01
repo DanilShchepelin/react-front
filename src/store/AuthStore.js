@@ -1,16 +1,7 @@
-const { makeObservable, reaction, flow, observable, action } = require('mobx');
+const { makeObservable, reaction, flow, observable, action, computed } = require('mobx');
 
 export class AuthStore {
-    @observable currentUser = fetch('http://localhost:8080/api/login/currentUser', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-            'Access-Control-Allow-Origin': '*'
-        },
-        credentials: 'include'
-    });
-
-    isLoggedIn = false;
+    @observable currentUser = localStorage.getItem('SessionID');
 
     constructor() {
         makeObservable(this);
@@ -19,16 +10,16 @@ export class AuthStore {
             () => this.currentUser,
             (currentUser) => {
                 if (currentUser) {
-                    this.isLoggedIn = true;
+                    localStorage.setItem('SessionID', currentUser);
                 } else {
-                    this.isLoggedIn = false;
+                    localStorage.removeItem('SessionID');
                 }
             }
         )
     }
 
     @flow *getUser(email, password) {
-        yield fetch('http://localhost:8080/api/login/auth', {
+        const response = yield fetch('http://localhost:8081/api/login/auth', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -37,10 +28,17 @@ export class AuthStore {
             credentials: 'include',
             body: JSON.stringify({ email, password }),
         });
+
+        if (response.status >= 400) {
+            console.log('err');
+            return;
+        }
+        const {sessionID} = yield response.json();
+        this.currentUser = sessionID;
     }
 
     @action logout() {
-        fetch('http://localhost:8080/api/login/logout', {
+        fetch('http://localhost:8081/api/login/logout', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -49,4 +47,9 @@ export class AuthStore {
             credentials: 'include'
         });
     }
+
+    @computed get isLoggedIn() {
+        return Boolean(this.currentUser);
+    }
 }
+

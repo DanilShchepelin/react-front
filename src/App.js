@@ -1,3 +1,4 @@
+import React from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import './App.css';
 import Dialogs from './components/Dialogs/Dialogs';
@@ -26,16 +27,19 @@ const App = () => {
           <Navbar />
           <div className='content'>
             <Routes>
-              AuthStore.isLoggedIn ? 
-                <Route path='/profile' element={<Profile />} />
-                <Route path='/dialogs/*' element={<Dialogs />} />
-                <Route path='/news' element={<News />} />
-                <Route path='/music' element={<Music />} />
-                <Route path='/settings' element={<Settings />} /> 
-                <Route path='/registration' element={<Registration />} /> :
-                <Route path='/login' element={<Login />} />
-              
-            </Routes>
+              {
+                AuthStore.isLoggedIn ?
+                  <>
+                    <Route path='/profile' element={<Profile />} />
+                    <Route path='/dialogs/*' element={<Dialogs />} />
+                    <Route path='/news' element={<News />} />
+                    <Route path='/music' element={<Music />} />
+                    <Route path='/settings' element={<Settings />} /> 
+                    <Route path='/registration' element={<Registration />} /> 
+                  </> :
+                  <Route path='/login' element={<Login />} />
+              }
+            </Routes>                                      
           </div>
         </div>
       </div>
@@ -43,5 +47,5 @@ const App = () => {
   );
 }
 
-export default observer(App);
+export default App;
 

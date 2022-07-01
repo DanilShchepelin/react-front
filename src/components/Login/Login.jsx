@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { MainStoreContext } from '../../store';
 import './Login.css';
@@ -12,17 +12,6 @@ function Login(props) {
 
     const submit = () => {
         console.log(email, password);
-
-        AuthStore.getUser(email, password);
-        // fetch('http://localhost:8080/api/login/auth', {
-        //     method: 'POST',
-        //     headers: {
-        //         'Content-Type': 'application/json',
-        //         'Access-Control-Allow-Origin': '*'
-        //     },
-        //     body: JSON.stringify({ email, password }),
-        //     credentials: 'include'
-        // });
     }
     return (
         <div className="login_form">
@@ -49,4 +38,4 @@ function Login(props) {
 }
 
 
-export default observer(Login);
+export default Login;
