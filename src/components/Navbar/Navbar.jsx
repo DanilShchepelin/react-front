@@ -1,3 +1,4 @@
+import React from 'react';
 import { NavLink } from 'react-router-dom';
 import './Navbar.css'
 
@@ -12,13 +13,10 @@ const Navbar = () => {
           <NavLink to={'/dialogs'}>Messages</NavLink>
         </div>
         <div className='nav_menu-item'>
-          <a href='/news'>News</a>
+          <NavLink to={'/news'}>News</NavLink>
         </div>
         <div className='nav_menu-item'>
-          <a href='/music'>Music</a>
-        </div>
-        <div className='nav_menu-item'>
-          <a href='/settings'>Settings</a>
+          <NavLink to={'/settings'}>Settings</NavLink>
         </div>
       </div>
     </nav>

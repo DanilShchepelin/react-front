@@ -1,6 +1,6 @@
 import React from 'react';
 import './MyPosts.css'
-import Post from './Post/Post';
+import Post from './Post/Post.jsx';
 import avatar from '../../../static/media/def_avatar.jpg';
 
 

@@ -17,6 +17,7 @@ module.exports = {
     extensions: [ '.js', '.json', '.node', '.css', '.jsx' ]
   },
   devServer: {
+    historyApiFallback: true,
     port: 9000
   },
   module: {
@@ -62,7 +63,7 @@ module.exports = {
             loader: 'url-loader',
             options: {
               limit: 10000,
-              name: 'static/media/[name].[hash:8].[ext]'
+              name: 'static/media/[name].[ext]'
             }
           }
         ]
@@ -74,7 +75,7 @@ module.exports = {
             loader: 'file-loader',
             options: {
               limit: 10000,
-              name: 'static/media/[name].[fullhash:8].[ext]'
+              name: 'static/media/[name].[ext]'
             }
           }
         ]

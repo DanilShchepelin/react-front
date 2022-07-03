@@ -1,16 +1,16 @@
 const { makeObservable, reaction, flow, observable, action, computed } = require('mobx');
 
 export class AuthStore {
-    @observable currentUser = localStorage.getItem('SessionID');
+    @observable currentSession = localStorage.getItem('SessionID');
 
     constructor() {
         makeObservable(this);
 
         reaction(
-            () => this.currentUser,
-            (currentUser) => {
-                if (currentUser) {
-                    localStorage.setItem('SessionID', currentUser);
+            () => this.currentSession,
+            (currentSession) => {
+                if (currentSession) {
+                    localStorage.setItem('SessionID', currentSession);
                 } else {
                     localStorage.removeItem('SessionID');
                 }
@@ -34,8 +34,25 @@ export class AuthStore {
             return;
         }
         const {sessionID} = yield response.json();
-        this.currentUser = sessionID;
+        this.currentSession = sessionID;
     }
+
+    // @flow *getCurrentUser() {
+    //     const response = yield fetch('http://localhost:8081/api/login/currentUser', {
+    //         method: 'GET',
+    //         headers: {
+    //             'Access-Control-Allow-Origin': '*'
+    //         },
+    //         credentials: 'include'
+    //     });
+
+    //     if (response.status >= 400) {
+    //         console.log('err');
+    //         return;
+    //     }
+    //     const {user} = yield response.json();
+    //     this.currentUser = user;
+    // };
 
     @action logout() {
         fetch('http://localhost:8081/api/login/logout', {
@@ -46,10 +63,12 @@ export class AuthStore {
             },
             credentials: 'include'
         });
+
+        this.currentSession = null;
     }
 
     @computed get isLoggedIn() {
-        return Boolean(this.currentUser);
+        return Boolean(this.currentSession);
     }
 }
 

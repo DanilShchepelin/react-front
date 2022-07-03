@@ -1,18 +1,19 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { NavLink } from 'react-router-dom';
 import { MainStoreContext } from '../../store';
 import './Login.css';
 import {observer} from 'mobx-react';
 
-function Login(props) {
+function Login() {
     const {AuthStore} = useContext(MainStoreContext); 
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
-    const submit = () => {
-        console.log(email, password);
-    }
+    const onLogin = () => {
+        AuthStore.getUser(email, password);
+    };
+
     return (
         <div className="login_form">
             <h2>Login</h2>
@@ -26,7 +27,7 @@ function Login(props) {
                     <input type="password" name="password" required="" value={password} onChange={event => setPassword(event.target.value)}></input>
                 </div>
                 <NavLink to={'/profile'}>
-                    <button className="login_button" onClick={submit}>Sign in</button>
+                    <button className="login_button" onClick={onLogin}>Sign in</button>
                 </NavLink>
                 <div className='login_text'>OR</div>
                 <NavLink to={'/registration'}>
@@ -38,4 +39,4 @@ function Login(props) {
 }
 
 
-export default Login;
+export default observer(Login);

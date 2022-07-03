@@ -1,16 +1,13 @@
+import React, {useContext} from 'react';
+import { MainStoreContext } from '../../store';
 import { NavLink } from 'react-router-dom';
 import './Header.css';
 
 const Header = () => {
+  const {AuthStore} = useContext(MainStoreContext); 
+
   const logout = () => {
-    fetch('http://localhost:8080/api/login/logout', {
-      method: 'POST',
-      headers: {
-          'Content-Type': 'application/json',
-          'Access-Control-Allow-Origin': '*'
-      },
-      credentials: 'include'
-    });
+    AuthStore.logout();
   }
 
   return (
