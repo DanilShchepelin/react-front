@@ -1,21 +1,10 @@
-import { flow, makeObservable, observable, reaction } from "mobx";
+const { makeObservable, flow, observable } = require('mobx');
 
 export class UserStore {
     @observable currentUserData = null;
 
     constructor() {
         makeObservable(this);
-
-        reaction(
-            () => this.currentUserData,
-            (currentUserData) => {
-                if (currentUserData) {
-                    localStorage.setItem('userId', currentUserData);
-                } else {
-                    localStorage.removeItem('userId');
-                }
-            }
-        )
     }
 
     @flow *getUserData() {

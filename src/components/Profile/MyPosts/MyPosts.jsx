@@ -1,38 +1,28 @@
 import React from 'react';
+import { MainStoreContext } from '../../../store';
 import './MyPosts.css'
 import Post from './Post/Post.jsx';
-import avatar from '../../../static/media/def_avatar.jpg';
+import {observer} from 'mobx-react';
+// import avatar from '../../../static/media/def_avatar.jpg';
 
+const avatar = '../../../static/media/def_avatar.jpg';
 
 class MyPosts extends React.Component {
+    static contextType = MainStoreContext;
+
+    componentDidMount() {
+        this.context.PostsStore.getUserPosts();
+    }
+
     constructor(props) {
         super(props);
         this.state = {
-            value: ''
+            text: ''
         };
+    }
 
-        this.postData = [
-            {
-                id: 1,
-                value: 'Hello',
-                avatar: avatar
-            },
-            {
-                id: 2,
-                value: 'Пошел на хуй',
-                avatar: avatar
-            },
-            {
-                id: 3,
-                value: 'Супер',
-                avatar: avatar
-            },
-            {
-                id: 4,
-                value: 'Супер',
-                avatar: avatar
-            },
-        ];
+    addPost = () => {
+        this.context.PostsStore.addNewPost(this.state.text);
     }
 
     render() {
@@ -42,17 +32,25 @@ class MyPosts extends React.Component {
                     <h3>My post</h3>
                     <div className='content_profile_newPost'>
                         <div>
-                            <input type='text' placeholder='Enter your message to people...'></input>
+                            <input 
+                                type='text' 
+                                placeholder='Enter your message to people...' 
+                                value={this.state.text} 
+                                onChange={(event) => this.setState({text: event.target.value})}
+                            ></input>
                         </div>
                         <div>
-                            <button className='post_button'>Send post</button>
+                            <button 
+                                className='post_button'
+                                onClick={this.addPost}
+                            >Send post</button>
                         </div>
                     </div>
                 </form>
 
                 {
-                    this.postData.reverse().map(element => {
-                        return <Post key={element.id} value={element.value} avatar={element.avatar}/>
+                    this.context.PostsStore.postsData?.map(element => {
+                        return <Post key={element.id} text={element.text} name={element.name} avatar={avatar}/>
                     })
                 }
             </div>
@@ -60,4 +58,4 @@ class MyPosts extends React.Component {
     }
 }
 
-export default MyPosts;
+export default observer(MyPosts);

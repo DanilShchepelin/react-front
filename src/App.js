@@ -23,7 +23,6 @@ const App = () => {
         <div className='row'>
           <Navbar />
           <div className='content'>
-            
               {
                 AuthStore.isLoggedIn ?
                   <Routes>
@@ -34,8 +33,7 @@ const App = () => {
                     <Route path='/registration' element={<Registration />} /> 
                   </Routes> :
                   <Login />
-              }
-                                                  
+              }                                      
           </div>
         </div>
       </div>
