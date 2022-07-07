@@ -9,6 +9,7 @@ import News from './components/News/News.jsx';
 import Profile from './components/Profile/Profile.jsx';
 import Settings from './components/Settings/Settings.jsx';
 import Registration from './components/Registration/Registration.jsx'
+import Users from './components/Users/Users.jsx';
 import { useContext } from 'react';
 import { MainStoreContext } from './store';
 import {observer} from 'mobx-react';
@@ -26,7 +27,8 @@ const App = () => {
               {
                 AuthStore.isLoggedIn ?
                   <Routes>
-                    <Route path='/profile' element={<Profile />} />
+                    <Route path='/' element={<Profile />} />
+                    <Route path='/users' element={<Users />} />
                     <Route path='/dialogs/*' element={<Dialogs />} />
                     <Route path='/news' element={<News />} />
                     <Route path='/settings' element={<Settings />} /> 

@@ -7,7 +7,10 @@ const Navbar = () => {
     <nav className='nav'>
       <div className='nav_menu'>
         <div className='nav_menu-item'>
-          <NavLink to={'/profile'}>Profile</NavLink>
+          <NavLink to={'/'}>Profile</NavLink>
+        </div>
+        <div className='nav_menu-item'>
+          <NavLink to={'/users'}>Users</NavLink>
         </div>
         <div className='nav_menu-item'>
           <NavLink to={'/dialogs'}>Messages</NavLink>

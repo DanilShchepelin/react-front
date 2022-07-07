@@ -17,7 +17,6 @@ const Header = () => {
       </div>
 
       <div className="header_sign">
-        <NavLink to={'/login'} className="header_sign_in">Sign in</NavLink>
         <NavLink to={'/login'} className="header_sign_out" onClick={logout}>Log out</NavLink>
       </div>
     </header>
