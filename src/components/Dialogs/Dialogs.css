@@ -1,5 +1,5 @@
 .dialogs {
-    height: calc(100vh - 130px);
+    height: calc(100vh - 105px);
     padding: 20px;
     display: flex;
     flex-direction: row;
@@ -9,15 +9,17 @@
     margin-right: 60px;
 }
 
-.dialogs .dialogs_items .dialogs_item {
-    height: 25px;
+.dialogs .dialogs_items .dialogs_item button{
+    height: 40px;
     width: 150px;
     padding-top: 10px;
     padding-left: 10px;
     margin-bottom: 5px;
     padding-bottom: 10px;
+    background-color: #FFBE7BFF;
     border: 1px solid rgb(179, 122, 66);
     border-radius: 5px;
+    cursor: pointer;
 }
 
 .dialogs .dialogs_items .dialogs_item:last-child {
@@ -25,14 +27,73 @@
 }
 
 .dialogs .dialogs_messages {
-    width: 100%;
+    width: 95%;
     padding: 10px;
     height: calc(100vh - 150px);
     background-color: #FFBE7BFF;
     border-radius: 5px;
+    position: relative;
+    overflow: auto;
+}
+
+.dialogs .dialogs_messages .dialogs_message_item {
+    margin-top: 15px;
+    padding: 5px;
+    width: 100%;
+    border: 1px solid rgb(179, 122, 66);
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+}
+
+.dialogs .dialogs_messages .dialogs_message_item .time {
+    color: #a0a0a0;
+    font-size: 12px;
+    margin-left: auto;
+    margin-right: 15px;
+}
+
+.dialogs .dialogs_messages .dialogs_message_item .text {
+    margin-left: 15px;
+}
+
+.dialogs .dialogs_messages .dialogs_message_item .name {
+    color: #666666;
 }
 
 .dialogs a {
     text-decoration: none;
     color: black;
+}
+
+.dialogs .dialogs_messageBlock {
+    overflow: auto;
+}
+
+.dialogs .dialogs_sendMessage {
+    height: 50px;
+    width: 100%;
+    margin-top: 15px;
+    margin-left: 15px;
+    margin-right: 15px;
+    margin-bottom: 15px;
+    position: absolute;
+    /* bottom: -10; */
+}
+
+.dialogs .dialogs_sendMessage input {
+    width: 85%;
+    height: 100%;
+    background-color: #FFA351FF;
+    border: 2px solid #FFA351FF;
+    border-radius: 10px;
+}
+
+.dialogs .dialogs_sendMessage button {
+    height: 100%;
+    width: 70px;
+    margin-left: 20px;
+    background-color: #FFA351FF;
+    border: none;
+    border-radius: 10px;
 }

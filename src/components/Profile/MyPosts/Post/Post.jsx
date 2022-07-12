@@ -2,9 +2,12 @@ import React from 'react';
 import './Post.css'
 // import cross from '../../../../static/media/del.png';
 
-const cross = '../../../../static/media/del.png';
+// const cross = '../../../../static/media/del.png';
 
 const Post = (props) => {
+    const cross = '../../../../static/media/del.png';
+
+
     return (
         <div className='content_profile_posts'>
             <div className='content_profile_posts-img'>

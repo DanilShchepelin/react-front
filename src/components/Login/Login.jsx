@@ -26,7 +26,7 @@ function Login() {
                     <div>Password</div>
                     <input type="password" name="password" required="" value={password} onChange={event => setPassword(event.target.value)}></input>
                 </div>
-                <NavLink to={'/profile'}>
+                <NavLink to={'/'}>
                     <button className="login_button" onClick={onLogin}>Sign in</button>
                 </NavLink>
                 <div className='login_text'>OR</div>

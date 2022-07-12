@@ -7,6 +7,7 @@ import { NavLink } from 'react-router-dom';
 
 const Users = () => {
     const {UserStore} = useContext(MainStoreContext);
+    
     const avatar = '../../static/media/def_avatar.jpg';
     
     useEffect(
