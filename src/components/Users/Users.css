@@ -28,6 +28,10 @@
     margin-right: 15px;
 }
 
+.users .users_item .users_item_button .bun {
+    margin-right: 15px;
+}
+
 .users .users_item .users_item_button button {
     width: 150px;
     height: 30px;

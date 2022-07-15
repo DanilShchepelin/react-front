@@ -1,8 +1,10 @@
-import React, {useContext, useEffect} from "react";
+import React, {useContext, useEffect, useState} from "react";
 import { NavLink } from "react-router-dom";
 import '../Dialogs.css';
 import { MainStoreContext } from '../../../store';
 import {observer} from 'mobx-react';
+
+import socket from '../../../socket';
 
 
 const DialogItem = (props) => {
@@ -23,8 +25,6 @@ const DialogItem = (props) => {
                         <NavLink to={`/dialogs/${dialog.userTwoId}`} key={dialog.id}>
                             <button>{dialog.userTwoName}</button>
                         </NavLink>
-
-                        
                     )   
                 })
             }

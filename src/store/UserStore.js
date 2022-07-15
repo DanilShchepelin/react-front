@@ -41,4 +41,28 @@ export class UserStore {
         const {users} = yield response.json();
         this.allUsers = users; 
     }
+
+    @flow *updateUser(name, lastName) {
+        yield fetch('http://localhost:8081/api/users/update', {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json',
+                'Access-Control-Allow-Origin': '*'
+            },
+            credentials: 'include',
+            body: JSON.stringify({
+                name, lastName
+            })
+        })
+    }
+
+    @flow *deleteUser(userId) {
+        yield fetch('http://localhost:8081/api/users/delete/' + userId, {
+            method: 'DELETE',
+            headers: {
+                'Access-Control-Allow-Origin': '*'
+            },
+            credentials: 'include'
+        });
+    }
 }

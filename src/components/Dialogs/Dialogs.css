@@ -7,6 +7,7 @@
 
 .dialogs .dialogs_items {
     margin-right: 60px;
+    width: 100px;
 }
 
 .dialogs .dialogs_items .dialogs_item button{
@@ -70,15 +71,26 @@
     overflow: auto;
 }
 
+.dialogs .dialogs_messages::-webkit-scrollbar {
+    width: 10px;
+    background-color: #FFBE7BFF;
+    border-radius: 10px;
+}
+
+.dialogs .dialogs_messages::-webkit-scrollbar-thumb {
+    background-color: #FFA351FF;
+    border-radius: 10px;
+}
+
 .dialogs .dialogs_sendMessage {
     height: 50px;
-    width: 100%;
+    width: 95%;
     margin-top: 15px;
     margin-left: 15px;
     margin-right: 15px;
     margin-bottom: 15px;
-    position: absolute;
-    /* bottom: -10; */
+    /* position: fixed;
+    bottom: 0; */
 }
 
 .dialogs .dialogs_sendMessage input {
@@ -87,6 +99,7 @@
     background-color: #FFA351FF;
     border: 2px solid #FFA351FF;
     border-radius: 10px;
+    margin-bottom: 15px;
 }
 
 .dialogs .dialogs_sendMessage button {
@@ -96,4 +109,5 @@
     background-color: #FFA351FF;
     border: none;
     border-radius: 10px;
+    cursor: pointer;
 }

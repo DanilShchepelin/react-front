@@ -4,8 +4,10 @@ import '../Dialogs.css';
 import { MainStoreContext } from '../../../store';
 import { observer } from 'mobx-react';
 
+import socket from '../../../socket';
 
-const MessageItem = (props) => {
+
+const MessageItem = () => {
     const { MessagesStore } = useContext(MainStoreContext);
     const params = useParams();
     const userTwoId = params.userTwoId;
@@ -13,12 +15,16 @@ const MessageItem = (props) => {
     const [text, setText] = useState('');
 
     const sendMessage = () => {
-        MessagesStore.addNewMessage(text, userTwoId)
+        MessagesStore.addNewMessage(text, userTwoId);
+        setText('');
     }
+
+
 
     useEffect(
         () => {
-            MessagesStore.getMessages(userTwoId);
+            MessagesStore.getDialog(userTwoId);
+            MessagesStore.getMessages(userTwoId)
         },
         []
     );

@@ -4,6 +4,8 @@ import { MainStoreContext } from '../../store';
 import './Login.css';
 import {observer} from 'mobx-react';
 
+import socket from '../../socket';
+
 function Login() {
     const {AuthStore} = useContext(MainStoreContext); 
 
@@ -11,7 +13,18 @@ function Login() {
     const [password, setPassword] = useState('');
 
     const onLogin = () => {
+        if (email.length == 0) {
+            alert('Enter email');
+            return;
+        }
+
+        if (password.length == 0) {
+            alert('Enter password');
+            return;
+        }
         AuthStore.getUser(email, password);
+        socket.connect();
+        // io('http://localhost:8081', { transports: ['websocket'] });
     };
 
     return (
@@ -29,10 +42,7 @@ function Login() {
                 <NavLink to={'/'}>
                     <button className="login_button" onClick={onLogin}>Sign in</button>
                 </NavLink>
-                <div className='login_text'>OR</div>
-                <NavLink to={'/registration'}>
-                    <button className="login_button">Create new user</button>
-                </NavLink>
+                <div className='login_text'>OR CREATE NEW USER</div>
             </form>
         </div>
     );

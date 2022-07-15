@@ -14,6 +14,10 @@ import { useContext } from 'react';
 import { MainStoreContext } from './store';
 import {observer} from 'mobx-react';
 
+// import io from 'socket.io-client';
+
+// const socket = io('http://localhost:8081', { transports: ['websocket'] });
+
 const App = () => {
   const {AuthStore} = useContext(MainStoreContext);
 
@@ -32,9 +36,13 @@ const App = () => {
                     <Route path='/dialogs/*' element={<Dialogs />} />
                     <Route path='/news' element={<News />} />
                     <Route path='/settings' element={<Settings />} /> 
-                    <Route path='/registration' element={<Registration />} /> 
+                    {/* <Route path='/registration' element={<Registration />} />  */}
                   </Routes> :
-                  <Login />
+                  <>
+                    <Login />
+                    <Registration />
+                  </>
+                  
               }                                      
           </div>
         </div>

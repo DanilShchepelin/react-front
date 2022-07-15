@@ -37,6 +37,18 @@ export class AuthStore {
         this.currentSession = sessionID;
     }
 
+    @flow *addUser(name, lastName, dateOfBirth, email, password) {
+        yield fetch('http://localhost:8081/api/login/registration', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Access-Control-Allow-Origin': '*'
+            },
+            credentials: 'include',
+            body: JSON.stringify({ name, lastName, dateOfBirth, email, password })
+        });
+    }
+
     // @flow *getCurrentUser() {
     //     const response = yield fetch('http://localhost:8081/api/login/currentUser', {
     //         method: 'GET',

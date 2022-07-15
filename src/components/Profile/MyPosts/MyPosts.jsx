@@ -50,7 +50,7 @@ class MyPosts extends React.Component {
 
                 {
                     this.context.PostsStore.postsData?.map(element => {
-                        return <Post key={element.id} text={element.text} name={element.name} avatar={avatar}/>
+                        return <Post key={element.id} text={element.text} name={element.name} avatar={avatar} postId={element.id}/>
                     })
                 }
             </div>
